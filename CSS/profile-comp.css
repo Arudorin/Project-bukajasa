@@ -1,0 +1,101 @@
+body {
+	background-color: white;
+}
+.container {
+	width: 1100px;
+	height: 592px;
+	margin: auto;
+	padding-top: 10px;
+	background-color: white;
+}
+
+.header {
+	background-image: url(../Images/header.jpg);
+	padding: 80px;
+	padding-right: 80px;
+	margin-top: -20px;
+}
+
+.foto {
+	width: 150px;
+	height: 150px;
+	background-color: #121525;
+	border-radius: 50%;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.teks p {
+	font-family: 'Oswald', sans-serif;
+	color: #454545;
+	font-size: 18px;
+	text-align: center;
+}
+
+#edit a{
+	text-decoration: none;
+	padding: 5px;
+	padding-right: 40px;
+	padding-left: 40px;
+	border-radius: 5px;
+	background-color: #121525;
+	border-style: none;
+	font-family: arial;
+	font-size: 15px;
+	color: white; 
+	transition: 0.6s;
+	margin-left: 430px;
+	float: left;
+}
+
+#logout a{
+	position: absolute;
+	text-decoration: none;
+	padding: 5px;
+	padding-right: 45px;
+	padding-left: 45px;
+	border-radius: 5px;
+	background-color: #121525;
+	border-style: none;
+	font-family: arial;
+	font-size: 15px;
+	color: white; 
+	transition: 0.6s;
+	margin-left: 10px;
+}
+
+.bawah {
+	background-color: #121525;
+	width: 1060px;
+	margin-top: 50px;
+	padding: 20px;
+}
+
+.bawah button {
+	padding: 8px;
+	padding-right: 20px;
+	padding-left: 20px;
+	border-radius: 5px;
+	background-color: #f42122;
+	font-family: arial;
+	color: white; 
+	transition: 0.6s;
+	float: left;
+	border-style: none;
+	margin-left: 20px;
+}
+
+.bawah a{
+	text-decoration: none;
+}
+
+.bawah table{
+	margin-top: 20px;
+}
+
+.bawah table tr td font {
+	font-family: 'Oswald', sans-serif;
+	font-size: 20px;
+	margin-bottom: 10px;
+	color: white;
+}

@@ -1,0 +1,62 @@
+body {
+	background-color: white;
+}
+
+.container {
+	width: 1100px;
+	height: 700px;
+	margin: auto;
+	padding-top: 10px;
+	background-color: #eaeaea;
+}
+
+.header {
+	background-image: url(../images/header.jpg);
+	padding: 80px;
+	padding-right: 80px;
+	margin-top: -20px;	
+}
+
+.kiri {
+	width: 700px;
+	float: left;
+	margin: 20px;
+	margin-top: 20px;
+	padding: 20px;
+}
+
+.kanan {
+	width: 260px;
+	height: 260px;
+	background-color: white;
+	border-radius: 50%;
+	float: left;
+	margin: 10px;
+	margin-top: 20px;
+}
+
+#sub{
+	font-family: 'Oswald', sans-serif;
+	color: #454545;
+	font-size: 30px;
+}
+
+#submenu{
+	font-family: 'Oswald', sans-serif;
+	color: #454545;
+	font-size: 18px;
+}
+
+.kiri a{
+	text-decoration: none;
+	padding: 15px;
+	padding-right: 40px;
+	padding-left: 40px;
+	border-radius: 5px;
+	background-color: #121525;
+	border-style: none;
+	font-family: arial;
+	font-size: 15px;
+	color: white; 
+	transition: 0.3s;
+}

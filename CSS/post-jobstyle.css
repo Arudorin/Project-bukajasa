@@ -1,0 +1,135 @@
+body {
+	background-color: white;
+}
+
+.container {
+	width: 1100px;
+	height: 1500px;
+	margin: auto;
+	padding-top: 10px;
+	background-color: #eaeaea;
+}
+
+.header {
+	background-image: url(../images/header.jpg);
+	padding: 80px;
+	padding-right: 80px;
+	margin-top: -20px;	
+}
+
+.isi {
+	width: 1100px;
+}
+
+.judul h1{
+	font-family: 'Oswald', sans-serif;
+	color: #454545;
+	font-size: 50px;
+	margin-top: 300px;
+	margin: 20px;
+	text-align: center;
+}
+
+.form {
+	float: left;
+	width: 800px;
+}
+
+.form form font {
+	font-family: ARIAL;
+}
+
+span{
+	font-family: arial;
+	color: red;
+}
+
+#form-teks{
+	font-family: 'Oswald', sans-serif;
+	font-size: 15px;
+	padding: 10px;
+	width: 550px;
+	margin-bottom: 10px;
+}
+
+select {
+	font-family: 'Oswald', sans-serif;
+	color: #717171;
+	font-size: 15px;
+	padding: 10px;
+	width: 200px;
+	margin-bottom: 10px;
+}
+
+#text-area {
+	width: 550px;
+	height: 300px;
+	font-family: 'Oswald', sans-serif;
+	color: #525252;
+	font-size: 15px;
+	padding: 10px;
+}
+
+#deadline {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: white;
+	padding: 7px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+#gaji {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: white;
+	padding: 7px;
+	padding-right: 45px;
+	padding-left: 45px;
+}
+
+.form table{
+	margin-left: 20px;
+	width: 800px;
+}
+
+#submit {
+	padding: 15px;
+	padding-right: 30px;
+	padding-left: 30px;
+	border-radius: 5px;
+	background-color: #1fa67b;
+	border-style: none;
+	font-family: arial;
+	font-size: 15px;
+	color: white; 
+	margin-top: 10px;
+	margin-left: 650px;
+	transition: 0.6s;
+}
+
+a{
+	text-decoration: none;
+	padding: 15px;
+	padding-right: 30px;
+	padding-left: 30px;
+	border-radius: 5px;
+	background-color: #1fa67b;
+	border-style: none;
+	font-family: arial;
+	font-size: 15px;
+	color: white; 
+	float: left;
+	margin-top: 10px;
+	margin-right: 20px;
+	margin-left: 50px;
+	transition: 0.3s;
+}
+a:hover{
+	background-color: #397f69;
+	color: white;
+}
+#submit:hover{
+	background-color: #397f69;
+	color: white;
+}

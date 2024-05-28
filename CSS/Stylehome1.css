@@ -1,0 +1,85 @@
+body {
+	background-color: white;
+}
+.container {
+	width: 1100px;
+	margin: auto;
+	padding-top: 10px;
+	background-color: white;
+}
+
+.header {
+	background-image: url(../Images/header.jpg);
+	padding: 80px;
+	padding-right: 80px;
+	margin-top: -20px;
+}
+.link a{
+	border-radius: 5px;
+	background-color: #121525;
+	padding: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+	border-style: none;
+	font-family: arial;
+	font-size: 15px;
+	color: white; 
+	text-decoration: none;
+	transition: 0.3s;
+}
+.link a:hover {
+	background-color: #e5e5e5;
+	color: #16418a;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+.link table{
+	margin-top: -50px;
+	margin-right: 20px;
+}
+.why h1{
+	font-family: 'Oswald', sans-serif;
+	color: #636363;
+	font-size: 50px;
+	margin-top: 300px;
+}
+.video img{
+	height: 422px;
+	width: 604px;
+	margin-left: 495px;
+	margin-top: -380px;
+}
+.kel1, .kel2, .kel3, .kel4 {
+	background-color: #121525;
+	width: 200px;
+	height: 200px;
+	margin-top: 10px;
+	display: inline-block;
+	margin-right: 8px;
+	padding: 32px;
+	transition: 1s;
+}
+.kel1, .kel2, .kel3, .kel4,  p {
+	font-family: 'Oswald', sans-serif;
+	font-size: 10px;
+	color: white;
+}
+.kel1:hover, .kel2:hover, .kel3:hover, .kel4:hover {
+	transform: translateY(-20px);
+}
+p {
+	font-family: arial;
+	font-size: 18px;
+	color: white;
+}
+.footer {
+	background-color: #121525;
+	padding: 10px;
+	margin-top: 10px;
+}
+.footer p{
+	text-align: center;
+}

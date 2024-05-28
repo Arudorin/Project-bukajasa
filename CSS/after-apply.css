@@ -1,0 +1,51 @@
+body {
+	background-color: white;
+}
+
+.container {
+	width: 1100px;
+	height: 1100px;
+	margin: auto;
+	padding-top: 10px;
+	background-color: #eaeaea;
+}
+
+.header {
+	background-image: url(../images/header.jpg);
+	padding: 80px;
+	padding-right: 80px;
+	margin-top: -20px;	
+}
+
+.isi {
+	margin: 40px;
+}
+
+.isi span{
+	font-family: 'Oswald', sans-serif;
+	color: #454545;
+	font-size: 22px;
+}
+
+.isi textarea {
+	width: 700px;
+	height: 300px;
+	font-family: 'Oswald', sans-serif;
+	color: #525252;
+	font-size: 15px;
+	padding: 10px;
+}
+
+#submit {
+	padding: 15px;
+	padding-right: 30px;
+	padding-left: 30px;
+	border-radius: 5px;
+	background-color: #1fa67b;
+	border-style: none;
+	font-family: arial;
+	font-size: 15px;
+	color: white; 
+	margin-top: 10px;
+	transition: 0.6s;
+}
