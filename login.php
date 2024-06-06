@@ -40,9 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($role == 'Mahasiswa') {
                 header("Location: student-home.php");
             } elseif ($role == 'Perusahaan') {
-                header("Location: comp-home.html");
+                header("Location: comp-home.php");
             } elseif ($role == 'Admin') {
-                header("Location: Admin/admin-home.html");   
+                header("Location: Admin/admin-home.php");   
             } else {
                 echo "Invalid role";
             }

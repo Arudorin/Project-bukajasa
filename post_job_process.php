@@ -1,28 +1,46 @@
-<!-- post_job_process.php -->
 <?php
 session_start();
-include 'db_connection.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $company_id = $_SESSION['user_id']; // Pastikan perusahaan sudah login
-    $title = $_POST['title'];
+// Database configuration
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "bukajasa";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if user is logged in and is a company
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Perusahaan') {
+    header("Location: login.php");
+    exit();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $title = $_POST['nama_pekerjaan'];
     $deadline = $_POST['deadline'];
-    $salary = $_POST['salary'];
-    $description = $_POST['description'];
-    $requirements = $_POST['requirements'];
+    $salary = $_POST['gaji'];
+    $description = $_POST['deskripsi'];
+    $requirements = $_POST['persyaratan'];
+    $company_id = $_SESSION['user_id'];
 
-    $sql = "INSERT INTO jobs (company_id, title, deadline, salary, description, requirements) VALUES (?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ississ", $company_id, $title, $deadline, $salary, $description, $requirements);
+    // Prepare and bind
+    $stmt = $conn->prepare("INSERT INTO jobs (company_id, title, deadline, salary, description, requirements) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("isssss", $company_id, $title, $deadline, $salary, $description, $requirements);
 
     if ($stmt->execute()) {
-        echo "Job posted successfully.";
-        header("Location: comp-home.html"); // Redirect ke halaman home perusahaan setelah berhasil
+        header("Location: comp-home.php");
     } else {
         echo "Error: " . $stmt->error;
     }
 
     $stmt->close();
-    $conn->close();
 }
+
+$conn->close();
 ?>

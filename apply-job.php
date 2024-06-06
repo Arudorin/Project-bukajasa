@@ -17,8 +17,8 @@
             <?php
             include 'db_connection.php';
 
-            if (isset($_GET['job_id'])) {
-                $job_id = $_GET['job_id'];
+            if (isset($_GET['id'])) {
+                $job_id = $_GET['id'];
 
                 $sql = "SELECT jobs.title, jobs.description, jobs.requirements, jobs.salary, jobs.deadline, users.username AS company 
                         FROM jobs 
@@ -47,7 +47,7 @@
                 echo "No job selected.";
             }
             ?>
-            <a href="apply_job_process.php?job_id=<?php echo $job_id; ?>">Apply</a>
+            <a href="apply-job-process.php?job_id=<?php echo $job_id; ?>">Apply</a>
         </div>
 
         <div class="kanan"></div>

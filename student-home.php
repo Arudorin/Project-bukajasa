@@ -1,3 +1,33 @@
+<?php
+session_start();
+
+// Database configuration
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "bukajasa";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if user is logged in and is a student
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Mahasiswa') {
+    header("Location: login.php");
+    exit();
+}
+
+// Fetch jobs available for students
+$sql = "SELECT jobs.id, jobs.title, jobs.deadline, jobs.salary, jobs.description, jobs.requirements, users.username 
+        FROM jobs 
+        JOIN users ON jobs.company_id = users.id";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,37 +42,24 @@
         <div class="header">
         </div>
 
-        <div class="log-out"><a href="home1.html">Log out</a></div>
-
+        <div class="log-out"><a href="logout.php">Log out</a></div>
+        
         <div class="posting">
-            <?php
-            include 'db_connection.php';
-
-            $sql = "SELECT jobs.id, jobs.title, jobs.description, jobs.requirements, jobs.salary, jobs.deadline, users.username AS company 
-                    FROM jobs 
-                    JOIN users ON jobs.company_id = users.id";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<div class='post-1'>";
-                    echo "<div class='foto'><p>Disini Foto</p></div>";
-                    echo "<div class='teks'>";
-                    echo "<a href='apply-job.php?job_id=" . $row['id'] . "'>" . $row['title'] . "</a><br>";
-                    echo "<span>Company: " . $row['company'] . "<br></span>";
-                    echo "<span>Requirements: " . $row['requirements'] . "</span>";
-                    echo "<ul>";
-                    echo "<li>" . $row['description'] . "</li>";
-                    echo "</ul>";
-                    echo "</div>";
-                    echo "</div>";
-                }
-            } else {
-                echo "No jobs available.";
-            }
-
-            $conn->close();
-            ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <div class="post-1">
+                    <div class="foto">
+                        <p>Disini Foto</p>
+                    </div>
+                    <div class="teks">
+                        <a href="apply-job.php?id=<?= $row['id'] ?>"><?= htmlspecialchars($row['title']) ?><br></a>
+                        <span>Deadline: <?= htmlspecialchars($row['deadline']) ?></span>
+                        <span>Gaji: Rp. <?= number_format($row['salary'], 2) ?> / Jam</span>
+                        <span>Deskripsi: <?= htmlspecialchars($row['description']) ?></span>
+                        <span>Persyaratan: <?= htmlspecialchars($row['requirements']) ?></span>
+                        <span>Perusahaan: <?= htmlspecialchars($row['username']) ?></span>
+                    </div>
+                </div>
+            <?php endwhile; ?>
         </div>
 
         <div class="profile">
@@ -50,7 +67,7 @@
                 <p>Disini Foto profil</p>
             </div>
             <div class="keterangan">
-                <a href="profile-mahasiswa.html">Nama Profil</a>
+                <a href="profile-mahasiswa.php"><?= $_SESSION['username'] ?></a>
             </div>
         </div>
 
@@ -58,3 +75,7 @@
 
 </body>
 </html>
+
+<?php
+$conn->close();
+?>
