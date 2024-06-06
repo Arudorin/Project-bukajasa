@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Apply Job</title>
-    <link rel="stylesheet" type="text/css" href="CSS/apply-jobstyle.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/apply-jobstyle.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 </head>
 <body>
@@ -10,12 +10,12 @@
     <div class="container">
 
         <div class="header">
-            <img src="Images/title.png">
+            <img src="../Images/title.png">
         </div>
 
         <div class="kiri">
             <?php
-            include 'db_connection.php';
+            include '../db_connection.php';
 
             if (isset($_GET['id'])) {
                 $job_id = $_GET['id'];

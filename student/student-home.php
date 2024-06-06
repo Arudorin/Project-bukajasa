@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 
 // Check if user is logged in and is a student
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Mahasiswa') {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -32,7 +32,7 @@ $result = $conn->query($sql);
 <html>
 <head>
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="CSS/student-home.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/student-home.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 </head>
 <body>
@@ -42,7 +42,7 @@ $result = $conn->query($sql);
         <div class="header">
         </div>
 
-        <div class="log-out"><a href="logout.php">Log out</a></div>
+        <div class="log-out"><a href="../logout.php">Log out</a></div>
         
         <div class="posting">
             <?php while ($row = $result->fetch_assoc()): ?>

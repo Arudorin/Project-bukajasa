@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 
 // Check if user is logged in and is a company
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Perusahaan') {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 

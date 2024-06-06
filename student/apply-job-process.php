@@ -3,13 +3,13 @@ session_start();
 
 // Memeriksa apakah pengguna sudah login
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
 // Memeriksa apakah ID pekerjaan disertakan dalam URL
 if (!isset($_GET['job_id']) || empty($_GET['job_id'])) {
-    header("Location: index.php");
+    header("Location: ../home.php");
     exit();
 }
 
@@ -20,7 +20,7 @@ $job_id = $_GET['job_id'];
 $user_id = $_SESSION['user_id'];
 
 // Melakukan koneksi ke database
-include 'db_connection.php';
+include '../db_connection.php';
 
 // Menyiapkan query untuk memeriksa apakah pengguna sudah mengirimkan aplikasi untuk pekerjaan ini sebelumnya
 $sql = "SELECT id FROM applications WHERE job_id = ? AND user_id = ?";

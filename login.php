@@ -38,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect based on role
             if ($role == 'Mahasiswa') {
-                header("Location: student-home.php");
+                header("Location: student/student-home.php");
             } elseif ($role == 'Perusahaan') {
-                header("Location: comp-home.php");
+                header("Location: company/comp-home.php");
             } elseif ($role == 'Admin') {
                 header("Location: Admin/admin-home.php");   
             } else {

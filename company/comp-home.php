@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db_connection.php';
+include '../db_connection.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Perusahaan') {
     echo "You must be logged in as a company to view this page.";
@@ -14,7 +14,7 @@ $company_id = $_SESSION['user_id'];
 <html>
 <head>
     <title>Home Company</title>
-    <link rel="stylesheet" type="text/css" href="CSS/comp-home.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/comp-home.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 </head>
 <body>
@@ -24,7 +24,7 @@ $company_id = $_SESSION['user_id'];
         <div class="header">
         </div>
 
-        <div class="log-out"><a href="logout.php">Log out</a></div>
+        <div class="log-out"><a href="../logout.php">Log out</a></div>
 
         <h1>Applicants</h1>
 
