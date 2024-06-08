@@ -20,7 +20,7 @@
             if (isset($_GET['id'])) {
                 $job_id = $_GET['id'];
 
-                $sql = "SELECT jobs.title, jobs.description, jobs.requirements, jobs.salary, jobs.deadline, users.username AS company 
+                $sql = "SELECT jobs.title, jobs.description, jobs.requirements, jobs.salary, jobs.deadline, jobs.category, users.username AS company 
                         FROM jobs 
                         JOIN users ON jobs.company_id = users.id 
                         WHERE jobs.id = ?";
@@ -36,7 +36,8 @@
                     echo "<span id='sub'>Deskripsi Pekerjaan: " . $row['description'] . "</span><br>";
                     echo "<span id='sub'>Persyaratan Pekerjaan: " . $row['requirements'] . "</span><br>";
                     echo "<span id='sub'>Gaji: Rp." . $row['salary'] . " / Jam</span><br>";
-                    echo "<span id='sub'>Deadline: " . $row['deadline'] . "</span><br><br>";
+                    echo "<span id='sub'>Deadline: " . $row['deadline'] . "</span><br>";
+                    echo "<span id='sub'>Kategori: " . $row['category'] . "</span><br><br>";
                 } else {
                     echo "Job not found.";
                 }

@@ -1,241 +1,224 @@
 body {
-	background-color: white;
+    background-color: white;
 }
 
 h1 {
-	font-family: 'Oswald', sans-serif;
-	color: #535353;
-	font-size: 50px;
-	margin-top: -5px;
-	margin-bottom: -5px;
-	margin-left: 5px;
+    font-family: 'Oswald', sans-serif;
+    color: #535353;
+    font-size: 50px;
+    margin: -5px 0 -5px 5px;
 }
 
 .container {
-	width: 1100px;
-	margin: auto;
-	background-color: white;
+    width: 1100px;
+    margin: auto;
+    background-color: white;
 }
 
 .header {
-	background-image: url(../Images/header.jpg);
-	padding: 80px;
-	padding-right: 80px;
+    background-image: url(../Images/header.jpg);
+    padding: 80px 80px 80px 0;
 }
 
 .log-out a {
-	position: absolute;
-	border-radius: 5px;
-	background-color: #121525;
-	padding: 10px;
-	padding-right: 20px;
-	padding-left: 20px;
-	border-style: none;
-	font-family: arial;
-	font-size: 15px;
-	color: white; 
-	text-decoration: none;
-	transition: 0.3s;
-	margin-left: 970px;
-	margin-top: -50px;
+    position: absolute;
+    border-radius: 5px;
+    background-color: #121525;
+    padding: 10px 20px;
+    border-style: none;
+    font-family: arial;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    margin: -50px 0 0 970px;
 }
 
 .log-out a:hover {
-	background-color: #111111;
-	color: white;
+    background-color: #111111;
+    color: white;
 }
 
 .container .posting {
-	width: 700px;
-	height: 1000px;
-	background-color: #121525;
-	margin-top: 10px;
-	float: left;
+    width: 700px;
+    background-color: white;
+    margin-top: 10px;
+    float: left;
 }
 
 .container .posting .post-1 {
-	width: 650px;
-	height: 250px;
-	background-color: #121525;
-	float: left;
-	margin: 20px;
+    width: 700px;
+    height: 200px;
+    background-color: #121525;
+    float: left;
+    margin-bottom: 10px;
 }
 
-.container .posting .post-1 .foto {
-	width: 160px;
-	height: 160px;
-	background-color: white;
-	margin-top: 18px;
-	margin-left: 18px;
-	margin-bottom: 18px;
-	border-radius: 50%;
-	float: left;
+.container .posting .foto {
+    width: 160px;
+    height: 160px;
+    background-color: white;
+    margin: 18px 0 18px 18px;
+    border-radius: 50%;
+    float: left;
 }
-.container .posting .post-1 .foto p{
-	text-align: center;
-	line-height: 120px;
-	font-family: 'Oswald', sans-serif;
-	font-size: 22px;
-	letter-spacing: -1.3px;
-	color: #215277;
+
+.container .posting .post-1 .foto p {
+    text-align: center;
+    line-height: 120px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    letter-spacing: -1.3px;
+    color: #215277;
 }
 
 .container .posting .post-1 .teks {
-	padding: 20px;
-	width: 370px;
-	height: 120px;
-	background-color: #121525;
-	margin:18px;
-	float: left;
+    padding: 0;
+    width: 440px;
+    height: 120px;
+    background-color: #121525;
+    margin: 20px;
+    float: left;
 }
 
 .container .posting .post-1 .teks a {
-	font-family: 'Oswald', sans-serif;
-	font-size: 28px;
-	letter-spacing: -1.3px;
-	color: white;
-	text-decoration: none;
-	transition: 0.3s;
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    letter-spacing: -1.3px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
 .container .posting .post-1 .teks span {
-	font-family: 'Oswald', sans-serif;
-	font-size: 17px;
-	letter-spacing: -0.5px;
-	color: white;
-	text-decoration: none;
-	margin-left: 0px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    color: white;
+    text-decoration: none;
+}
+
+.container .posting .post-1 .teks ul {
+    margin-top: -3px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: -0.5px;
+    color: white;
+    margin-left: -22px;
 }
 
 a:hover {
-	color: lightblue;
+    color: lightblue;
 }
 
-.CV a{
-	padding: 8px;
-	padding-right: 20px;
-	padding-left: 20px;
-	border-radius: 5px;
-	background-color: #0041e5;
-	text-decoration: none;
-	font-family: arial;
-	color: white; 
-	transition: 0.6s;
-	float: left;
-	margin-left: 210px;
+.CV a, .decline a, .accept a {
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: arial;
+    color: white;
+    transition: 0.6s;
+    float: left;
 }
 
-.decline a{
-	padding: 8px;
-	padding-right: 20px;
-	padding-left: 20px;
-	border-radius: 5px;
-	background-color: #f42122;
-	text-decoration: none;
-	font-family: arial;
-	color: white; 
-	transition: 0.6s;
-	float: left;
-	margin-left: 80px;
-
+.CV a {
+    background-color: #0041e5;
+    margin-left: 210px;
 }
 
-.accept a{
-	padding: 8px;
-	padding-right: 20px;
-	padding-left: 20px;
-	border-radius: 5px;
-	background-color: #089b04;
-	text-decoration: none;
-	font-family: arial;
-	color: white; 
-	transition: 0.6s;
-	float: left;
-	margin-left: 10px;
+.decline a {
+    background-color: #f42122;
+    margin-left: 80px;
+}
+
+.accept a {
+    background-color: #089b04;
+    margin-left: 10px;
 }
 
 .CV a:hover {
-	color: white;
-	background-color: #002a93;
+    background-color: #002a93;
 }
 
 .decline a:hover {
-	color: white;
-	background-color: #b40001;
+    background-color: #b40001;
 }
 
 .accept a:hover {
-	color: white;
-	background-color: #036a00;
+    background-color: #036a00;
 }
 
 hr {
-	margin-top: 260px;
+    margin-top: 260px;
 }
 
-.container .profile{
-	width: 390px;
-	height: 1000px;
-	background-color: #121525;
-	margin-top: 10px;
-	float: left;
-	margin-left: 10px;
+.container .profile {
+    width: 390px;
+    height: 1000px;
+    background-color: #121525;
+    margin: 10px 0 0 10px;
+    float: left;
 }
-
 
 .container .profile .foto-profil {
-	width: 160px;
-	height: 160px;
-	background-color: white;
-	margin: auto;
-	margin-top: 20px;
-	border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    background-color: white;
+    margin: 20px auto 0;
+    border-radius: 50%;
 }
 
-.container .profile .foto-profil p{
-	text-align: center;
-	line-height: 140px;
-	font-family: 'Oswald', sans-serif;
-	font-size: 22px;
-	letter-spacing: -1.3px;
-	color: #215277;
+.container .profile .foto-profil p {
+    text-align: center;
+    line-height: 140px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    letter-spacing: -1.3px;
+    color: #215277;
 }
 
-.container .profile .keterangan a{
-	font-family: 'Oswald', sans-serif;
-	font-size: 22px;
-	letter-spacing: -1.3px;
-	color: white;
-	text-decoration: none;
-	margin-left: 130px;
-	margin-top: 10px;
+.container .profile .keterangan a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    letter-spacing: -1.3px;
+    color: white;
+    text-decoration: none;
+    margin: 10px 0 0 130px;
 }
 
 span {
-	margin-left: 180px;
-	font-family: 'Oswald', sans-serif;
-	font-size: 18px;
-	letter-spacing: -1.3px;
-	color: white;
-
+    margin-left: 180px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    letter-spacing: -1.3px;
+    color: white;
 }
 
-.post-job a{
-	padding: 8px;
-	padding-right: 20px;
-	padding-left: 20px;
-	border-radius: 5px;
-	background-color: #0041e5;
-	text-decoration: none;
-	font-family: arial;
-	color: white; 
-	transition: 0.6s;
-	float: left;
-	margin-left: 139px;
-	margin-top: 20px;
+.post-job a {
+    padding: 8px 20px;
+    border-radius: 5px;
+    background-color: #0041e5;
+    text-decoration: none;
+    font-family: arial;
+    color: white;
+    transition: 0.6s;
+    float: left;
+    margin: 20px 0 0 139px;
 }
 
 .post-job a:hover {
-	color: white;
-	background-color: #002a93;
+    background-color: #002a93;
+    color: white;
+}
+
+select {
+    padding: 15px 30px;
+    border-radius: 5px;
+    background-color: #121525;
+    border-style: none;
+    font-family: arial;
+    font-size: 15px;
+    color: white;
+    margin-top: 10px;
+    transition: 0.6s;
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2024 at 08:27 AM
+-- Generation Time: Jun 08, 2024 at 11:58 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -39,8 +39,11 @@ CREATE TABLE `applications` (
 --
 
 INSERT INTO `applications` (`id`, `job_id`, `user_id`, `application_date`) VALUES
-(1, 1, 4, '2024-06-06 06:12:56'),
-(2, 2, 5, '2024-06-06 06:22:55');
+(4, 4, 4, '2024-06-08 19:08:57'),
+(5, 3, 4, '2024-06-08 19:09:06'),
+(6, 3, 5, '2024-06-08 20:51:19'),
+(7, 4, 5, '2024-06-08 20:51:21'),
+(8, 5, 5, '2024-06-08 20:51:23');
 
 -- --------------------------------------------------------
 
@@ -55,16 +58,18 @@ CREATE TABLE `jobs` (
   `description` text NOT NULL,
   `requirements` text NOT NULL,
   `salary` decimal(10,2) NOT NULL,
-  `deadline` date NOT NULL
+  `deadline` date NOT NULL,
+  `category` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `jobs`
 --
 
-INSERT INTO `jobs` (`id`, `company_id`, `title`, `description`, `requirements`, `salary`, `deadline`) VALUES
-(1, 1, 'front end', 'desain web', 'memiliki laptop', 100000.00, '2024-06-12'),
-(2, 1, 'back end ', 'mysql php', 'mempunyai laptop', 1000000.00, '2024-06-21');
+INSERT INTO `jobs` (`id`, `company_id`, `title`, `description`, `requirements`, `salary`, `deadline`, `category`) VALUES
+(3, 1, 'buat aplikasi', 'membuat aplikasi android dilaptop', 'otak,laptop,wifi', 99999999.99, '2024-06-29', 'Komputer/IT'),
+(4, 1, 'Itung Uang', 'menghitung uang dalam jumlah besar', 'anggota tubuh', 99999999.99, '2024-06-14', 'Akuntansi/Keuangan'),
+(5, 1, 'Ngajarin anak balita beckend programing', 'buat agar anak balita memahami beckend programing dalam 5 jam', 'mampu', 9999999.00, '2024-06-28', 'Pendidikan');
 
 -- --------------------------------------------------------
 
@@ -124,13 +129,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`

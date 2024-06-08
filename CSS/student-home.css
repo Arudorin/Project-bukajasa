@@ -93,11 +93,11 @@ select {
 }
 
 .container .posting .post-1 .teks {
-	padding: 20px;
+	padding: 0px;
 	width: 440px;
 	height: 120px;
 	background-color: #121525;
-	margin:18px;
+	margin:20px;
 	float: left;
 }
 

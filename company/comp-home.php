@@ -8,6 +8,12 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Perusahaan') {
 }
 
 $company_id = $_SESSION['user_id'];
+
+$sql = "SELECT id, title, category, requirements FROM jobs WHERE company_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $company_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -26,44 +32,26 @@ $company_id = $_SESSION['user_id'];
 
         <div class="log-out"><a href="../logout.php">Log out</a></div>
 
-        <h1>Applicants</h1>
-
         <div class="posting">
+            <div class="post-1">
             <?php
-            // Fetch job postings and their applicants
-            $sql = "SELECT applications.id AS application_id, applications.application_date, 
-                           jobs.title, users.username AS applicant_name, users.email AS applicant_email
-                    FROM applications 
-                    JOIN jobs ON applications.job_id = jobs.id 
-                    JOIN users ON applications.user_id = users.id 
-                    WHERE jobs.company_id = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $company_id);
-            $stmt->execute();
-            $result = $stmt->get_result();
-
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<div class='post-1'>";
-                    echo "<div class='foto'><p>Disini Foto</p></div>";
                     echo "<div class='teks'>";
-                    echo "<a href='about-job.html'>" . $row['title'] . "</a><br>";
-                    echo "<span>Nama Pelamar: " . $row['applicant_name'] . "</span><br>";
-                    echo "<span>Email Pelamar: " . $row['applicant_email'] . "</span><br>";
-                    echo "<span>Tanggal Aplikasi: " . $row['application_date'] . "</span><br>";
-                    echo "</div>";
-                    echo "<div class='decline'><a href='decline-application.php?id=" . $row['application_id'] . "'>Decline</a></div>";
-                    echo "<div class='accept'><a href='accept-application.php?id=" . $row['application_id'] . "'>Accept</a></div>";
-                    echo "<hr>";
-                    echo "</div>";
+                    echo "<a href='about-job.php?id={$row['id']}' style='display:inline-block;padding:0px 3px;background-color:#26293b;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;transition:background-color 0.3s ease;'>{$row['title']}</a><br>";
+                    echo "<span>Kategori: " . $row['category'] . "</span><br>";
+                    echo "<span>Persyaratan Pekerjaan: " . $row['requirements'] . "</span><br>";
+                    echo "</div><hr></div>";
                 }
             } else {
-                echo "No applicants found.";
+                echo "No jobs posted.";
             }
 
             $stmt->close();
             $conn->close();
             ?>
+            </div>
         </div>
 
         <div class="profile">
@@ -74,7 +62,7 @@ $company_id = $_SESSION['user_id'];
                 <a href="profile-comp.html">Nama Perusahaan</a>
                 <span><br>Email</span>
             </div>
-            <div class="post-job"> 
+            <div class="post-job">
                 <a href="post-job.php">Post a Job</a>
             </div>
         </div>
