@@ -2,12 +2,29 @@
 session_start();
 include '../db_connection.php';
 
+// Pastikan pengguna telah masuk dan merupakan seorang mahasiswa
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Mahasiswa') {
     echo "You must be logged in as a student to view this page.";
     exit();
 }
 
-// Get selected category
+$user_id = $_SESSION['user_id'];
+
+// Ambil informasi pengguna
+$sql_user = "SELECT name, email, profile_picture FROM users WHERE id = ?";
+$stmt_user = $conn->prepare($sql_user);
+$stmt_user->bind_param("i", $user_id);
+$stmt_user->execute();
+$result_user = $stmt_user->get_result();
+
+if ($result_user->num_rows == 0) {
+    echo "User not found.";
+    exit();
+}
+
+$user = $result_user->fetch_assoc();
+
+// Ambil kategori yang dipilih
 $selected_category = isset($_POST['category']) ? $_POST['category'] : '';
 ?>
 
@@ -61,13 +78,12 @@ $selected_category = isset($_POST['category']) ? $_POST['category'] : '';
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<div class='post-1'>";
-                    echo "<div class='foto'><p>Disini Foto</p></div>";
-                    echo "<div class='teks' style='padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;'>";
-                    echo "<a href='apply-job.php?id=" . $row['id'] . "'>" . $row['title'] . "</a><br>";
-                    echo "<span>Kategori: " . $row['category'] . "</span><br>";
-                    echo "<span>Persyaratan Pekerjaan: " . $row['requirements'] . "</span><br>";
-                    echo "<span>Gaji: Rp." . $row['salary'] . " / Jam</span><br>";
-                    echo "<span>Deadline: " . $row['deadline'] . "</span><br>";
+                    echo "<div class='teks'>";
+                    echo "<a href='apply-job.php?id=" . $row['id'] . "' style='display:inline-block;padding:0px 3px;background-color:#26293b;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;transition:background-color 0.3s ease;'>" . htmlspecialchars($row['title']) . "</a><br>";
+                    echo "<span>Kategori: " . htmlspecialchars($row['category']) . "</span><br>";
+                    echo "<span>Persyaratan Pekerjaan: " . htmlspecialchars($row['requirements']) . "</span><br>";
+                    echo "<span>Gaji: Rp." . htmlspecialchars($row['salary']) . " / Jam</span><br>";
+                    echo "<span>Deadline: " . htmlspecialchars($row['deadline']) . "</span><br>";
                     echo "</div></div>";
                 }
             } else {
@@ -75,14 +91,15 @@ $selected_category = isset($_POST['category']) ? $_POST['category'] : '';
             }
 
             $stmt->close();
-            $conn->close();
             ?>
         </div>
 
         <div class="profile">
-            <div class="foto-profil"><p>Disini Foto profil</p></div>
+            <div class="foto-profil">
+                <img src="../uploads/<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Foto Profil">
+            </div>
             <div class="keterangan">
-                <a href="profile-mahasiswa.html">Nama Profil</a>
+                <a href="profile-mahasiswa.php" style="margin-left: 128px;"><?php echo htmlspecialchars($user['name']); ?></a>
             </div>
         </div>
 
@@ -90,3 +107,7 @@ $selected_category = isset($_POST['category']) ? $_POST['category'] : '';
 
 </body>
 </html>
+
+<?php
+$conn->close();
+?>

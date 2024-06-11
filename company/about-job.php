@@ -29,7 +29,7 @@ if ($result->num_rows == 0) {
 
 $job = $result->fetch_assoc();
 
-$sql_applicants = "SELECT u.id, u.name 
+$sql_applicants = "SELECT a.id AS application_id, u.id AS user_id, u.name 
                    FROM applications a 
                    JOIN users u ON a.user_id = u.id 
                    WHERE a.job_id = ?";
@@ -65,14 +65,11 @@ $result_applicants = $stmt_applicants->get_result();
                 </div>
                 <div class="teks">
                     <span>Nama pekerjaan: <?php echo $job['title']; ?></span><br>
-                    <span>Deskripsi pekerjaan: <?php echo $job['description']; ?></span><br>
-                    <span>Persyaratan pekerjaan: <?php echo $job['requirements']; ?></span><br>
                     <span>Gaji: Rp. <?php echo number_format($job['salary'], 2); ?> / Jam</span><br>
                     <span>Deadline: <?php echo $job['deadline']; ?></span><br>
-                    <span>Perusahaan: <?php echo $job['company_name']; ?></span><br>
-                    <span>Email: <?php echo $job['email']; ?></span><br>
-                </div><hr>
-                <div class="delete" style="margin-left: 210px;"><a href="delete-job.php?id=<?php echo $job['id']; ?>">Hapus pekerjaan</a></div>
+                </div>
+                <hr>
+                <div class="delete"><a href="delete-job.php?id=<?php echo $job['id']; ?>">Hapus pekerjaan</a></div>
                 <table width="600px" align="center" cellspacing="30px">
                     <?php
                     if ($result_applicants->num_rows > 0) {
@@ -80,8 +77,8 @@ $result_applicants = $stmt_applicants->get_result();
                             echo "<tr>";
                             echo "<td><font>" . $applicant['name'] . "</font><hr></td>";
                             echo "<td width='200px' valign='top'>";
-                            echo "<div class='decline'><a href='decline-applicant.php?id=" . $applicant['id'] . "&job_id=" . $job['id'] . "'>Decline</a></div>";
-                            echo "<div class='accept'><a href='accept-applicant.php?id=" . $applicant['id'] . "&job_id=" . $job['id'] . "'>Accept</a></div>";
+                            echo "<div class='decline'><a href='decline_application.php?id=" . $applicant['application_id'] . "'>Decline</a></div>";
+                            echo "<div class='accept'><a href='accept_application.php?id=" . $applicant['application_id'] . "'>Accept</a></div>";
                             echo "<hr id='hr'>";
                             echo "</td>";
                             echo "</tr>";

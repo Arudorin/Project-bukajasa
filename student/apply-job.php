@@ -10,7 +10,6 @@
     <div class="container">
 
         <div class="header">
-            <img src="../Images/title.png">
         </div>
 
         <div class="kiri">
@@ -49,11 +48,7 @@
             }
             ?>
             <a href="apply-job-process.php?job_id=<?php echo $job_id; ?>">Apply</a>
-        </div>
 
-        <div class="kanan"></div>
-
-    </div>
 
 </body>
 </html>

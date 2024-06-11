@@ -1,39 +1,32 @@
 <?php
 session_start();
+include '../db_connection.php';
 
-// Database configuration
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "bukajasa";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Check if user is logged in and is a company
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Perusahaan') {
-    header("Location: login.php");
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Perusahaan') {
+    echo "You must be logged in as a company to view this page.";
     exit();
 }
 
-// Get application ID from URL
-$application_id = $_GET['id'];
+$application_id = isset($_GET['id']) ? $_GET['id'] : '';
+if (empty($application_id)) {
+    echo "No application ID provided.";
+    exit();
+}
 
-// Update application status to 'accepted'
 $sql = "UPDATE applications SET status = 'accepted' WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $application_id);
 $stmt->execute();
 
+if ($stmt->affected_rows > 0) {
+    echo "Application accepted successfully.";
+} else {
+    echo "Failed to accept application.";
+}
+
 $stmt->close();
 $conn->close();
 
-// Redirect back to company home
-header("Location: comp-home.php");
+header("Location: comp-home.php"); // Redirect back to job page
 exit();
 ?>
