@@ -85,7 +85,7 @@ $result_applicants = $stmt_applicants->get_result();
                     <span>Deadline: <?php echo htmlspecialchars($job['deadline']); ?></span><br>
                 </div>
                 <hr>
-                <div class="delete"><a href="delete-job.php?id=<?php echo $job['id']; ?>">Hapus pekerjaan</a></div>
+                <div class="delete"><a href="delete-pekerjaan.php?id=<?php echo $job['id']; ?>">Hapus pekerjaan</a></div>
                 <table width="600px" align="center" cellspacing="30px">
                     <?php
                     if ($result_applicants->num_rows > 0) {

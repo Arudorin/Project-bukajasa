@@ -2,7 +2,7 @@
 session_start();
 include '../db_connection.php';
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Admin') {
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Perusahaan') {
     header("Location: ../login.php");
     exit();
 }
@@ -50,7 +50,7 @@ $conn->close();
                 var errorMessage = "<?php echo isset($error_message) ? htmlspecialchars($error_message) : 'Error deleting job.'; ?>";
                 alert(errorMessage);
             }
-            window.location.href = "admin-pekerjaan.php"; // Redirect to admin page
+            window.location.href = "comp-home.php"; // Redirect to admin page
         }
         window.onload = displayDeleteMessage;
     </script>

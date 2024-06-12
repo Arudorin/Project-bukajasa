@@ -20,18 +20,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $name = $_POST['name'];
 
-    $sql = "INSERT INTO users (username, password, role, email, name) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $username, $password, $role, $email, $name);
-
-    if ($stmt->execute()) {
-        header("Location: home.html");
-        exit();
-    } else {
-        $error = "Error: " . $sql . "<br>" . $conn->error;
+    // Check if username is already in use
+    $check_username = "SELECT * FROM users WHERE username = '$username'";
+    $result_username = $conn->query($check_username);
+    if ($result_username->num_rows > 0) {
+        $error_message = "Username already exists.";
     }
 
-    $stmt->close();
+    // Check if email is already in use
+    $check_email = "SELECT * FROM users WHERE email = '$email'";
+    $result_email = $conn->query($check_email);
+    if ($result_email->num_rows > 0) {
+        $error_message = "Email already exists.";
+    }
+
+    // If no error, proceed with insertion
+    if (!isset($error_message)) {
+        $sql = "INSERT INTO users (username, password, role, email, name) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssss", $username, $password, $role, $email, $name);
+
+        if ($stmt->execute()) {
+            header("Location: home.html");
+            exit();
+        } else {
+            $error_message = "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
+
     $conn->close();
 }
 ?>
@@ -42,11 +60,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Sign Up</title>
     <link rel="stylesheet" type="text/css" href="CSS/sign-up.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var errorMessage = "<?php echo isset($error_message) ? $error_message : ''; ?>";
+            if (errorMessage) {
+                var modal = document.getElementById("error-modal");
+                var modalMessage = document.getElementById("modal-message");
+                modalMessage.innerText = errorMessage;
+                modal.style.display = "block";
+            }
+        });
+
+        function closeModal() {
+            var modal = document.getElementById("error-modal");
+            modal.style.display = "none";
+        }
+    </script>
 </head>
 <body>
+    <!-- Your HTML content -->
     <div class="container">
-        <div class="header">
-        </div>
+        <div class="header"></div>
         <div class="isi">
             <div class="judul"><h1>Sign Up</h1></div>
         </div>
@@ -85,11 +158,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </table>
                 <input id="submit" type="submit" name="submit" value="Submit" class="submit">
             </form>
-            <?php
-            if (isset($error)) {
-                echo "<span>$error</span>";
-            }
-            ?>
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="modal-message"></p>
         </div>
     </div>
 </body>
