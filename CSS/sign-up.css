@@ -1,113 +1,100 @@
 body {
-	background-color: white;
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .container {
-	width: 1100px;
-	height: 1100px;
-	margin: auto;
-	padding-top: 10px;
-	background-color: #eaeaea;
+    width: 600px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+    text-align: center;
 }
 
-.header {
-	background-image: url(../images/header.jpg);
-	padding: 80px;
-	padding-right: 80px;
-	margin-top: -20px;	
+.header img {
+    max-width: 80%;
+    height: auto;
 }
 
 .isi {
-	width: 1100px;
+    margin: 20px 0;
 }
 
-.judul h1{
-	font-family: 'Oswald', sans-serif;
-	color: #454545;
-	font-size: 50px;
-	margin-top: 300px;
-	margin: 20px;
-	text-align: center;
+.judul h1 {
+    font-family: 'Oswald', sans-serif;
+    color: #333;
+    font-size: 36px;
+    margin: 20px 0;
 }
 
 .form {
-	float: left;
-	width: 800px;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.form form font {
-	font-family: ARIAL;
+.form form {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
 }
 
-span{
-	font-family: arial;
-	color: red;
+span {
+    font-family: Arial, sans-serif;
+    color: red;
 }
 
-#kelamin {
-	margin-top: 10px;
-	margin-bottom: 10px;
+#form-teks, #TTL, select {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    width: calc(100% - 22px);
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border 0.3s;
 }
 
-#TTL {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	background-color: white;
-	padding: 7px;
-	padding-right: 15px;
-	padding-left: 15px;
-}
-
-#form-teks{
-	font-family: 'Oswald', sans-serif;
-	font-size: 15px;
-	padding: 10px;
-	width: 550px;
-	margin-bottom: 10px;
-}
-
-.form table{
-	margin-left: 20px;
-	width: 800px;
+#form-teks:focus, #TTL:focus, select:focus {
+    border: 1px solid #1fa67b;
+    outline: none;
 }
 
 #submit {
-	padding: 15px;
-	padding-right: 30px;
-	padding-left: 30px;
-	border-radius: 5px;
-	background-color: #1fa67b;
-	border-style: none;
-	font-family: arial;
-	font-size: 15px;
-	color: white; 
-	margin-top: 10px;
-	margin-left: 650px;
-	transition: 0.6s;
+    padding: 15px 30px;
+    border-radius: 5px;
+    background-color: #1fa67b;
+    border: none;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: white;
+    transition: background-color 0.6s;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-a{
-	text-decoration: none;
-	padding: 15px;
-	padding-right: 30px;
-	padding-left: 30px;
-	border-radius: 5px;
-	background-color: #1fa67b;
-	border-style: none;
-	font-family: arial;
-	font-size: 15px;
-	color: white; 
-	float: left;
-	margin-top: 10px;
-	margin-right: 20px;
-	margin-left: 50px;
-	transition: 0.3s;
+#submit:hover {
+    background-color: #397f69;
 }
-a:hover{
-	background-color: #397f69;
-	color: white;
+
+table {
+    width: 100%;
+    margin-top: 20px;
 }
-#submit:hover{
-	background-color: #397f69;
-	color: white;
+
+table td {
+    padding: 10px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
 }

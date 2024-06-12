@@ -9,6 +9,21 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Perusahaan') {
 
 $company_id = $_SESSION['user_id'];
 
+// Fetch company details
+$sql_company = "SELECT name, email, profile_picture FROM users WHERE id = ?";
+$stmt_company = $conn->prepare($sql_company);
+$stmt_company->bind_param("i", $company_id);
+$stmt_company->execute();
+$result_company = $stmt_company->get_result();
+
+if ($result_company->num_rows == 0) {
+    echo "Company not found.";
+    exit();
+}
+
+$company = $result_company->fetch_assoc();
+
+// Fetch jobs posted by the company
 $sql = "SELECT id, title, category, requirements FROM jobs WHERE company_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $company_id);
@@ -54,15 +69,15 @@ $result = $stmt->get_result();
             </div>
         </div>
 
+
         <div class="profile">
             <div class="foto-profil">
-                <p>Disini Foto profil</p>
+                <img src="../uploads/<?php echo htmlspecialchars($company['profile_picture']); ?>" alt="Foto Profil">
             </div>
             <div class="keterangan">
-                <a href="profile-comp.html">Nama Perusahaan</a>
-                <span><br>Email</span>
+                <a href="profile-comp.php"><?php echo htmlspecialchars($company['name']); ?></a>
             </div>
-            <div class="post-job">
+        </div>            <div class="post-job">
                 <a href="post-job.php">Post a Job</a>
             </div>
         </div>

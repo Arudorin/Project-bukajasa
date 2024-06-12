@@ -45,31 +45,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="container">
-        <div class="header"></div>
+        <div class="header">
+            <img src="Images/title.png" alt="Title">
+        </div>
         <div class="isi">
             <div class="judul"><h1>Sign Up</h1></div>
         </div>
         <div class="form">
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <label for="role">Role:</label>
-        <select id="role" name="role" required>
-            <option value="Mahasiswa">Mahasiswa</option>
-            <option value="Perusahaan">Perusahaan</option>
-        </select><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        <label for="name">Name Lengkap:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <input type="submit" value="Sign Up">
-    </form>
-    <?php
-    if (isset($error)) {
-        echo "<p>$error</p>";
-    }
-    ?>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <table>
+                    <tr>
+                        <td width="150px"><label for="username">Username<span>*</span></label></td>
+                        <td><input id="form-teks" type="text" name="username" placeholder="Username" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email<span>*</span></label></td>
+                        <td><input id="form-teks" type="email" name="email" placeholder="Email" autocomplete="off" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="name">Nama Lengkap<span>*</span></label></td>
+                        <td><input id="form-teks" type="text" name="name" placeholder="Nama Lengkap" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Password<span>*</span></label></td>
+                        <td><input id="form-teks" type="password" name="password" placeholder="Password" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="re-password">Re-Password<span>*</span></label></td>
+                        <td><input id="form-teks" type="password" name="re-password" placeholder="Re-Password" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="role">Role<span>*</span></label></td>
+                        <td>
+                            <select id="form-teks" name="role" required>
+                                <option value="Mahasiswa">Mahasiswa</option>
+                                <option value="Perusahaan">Perusahaan</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <input id="submit" type="submit" name="submit" value="Submit" class="submit">
+            </form>
+            <?php
+            if (isset($error)) {
+                echo "<span>$error</span>";
+            }
+            ?>
+        </div>
+    </div>
 </body>
 </html>

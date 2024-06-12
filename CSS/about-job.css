@@ -197,13 +197,12 @@ a:hover {
 
 .container .profile{
 	width: 390px;
-	height: 1000px;
+	height: 700px;
 	background-color: #121525;
 	margin-top: 10px;
 	float: left;
 	margin-left: 10px;
 }
-
 
 .container .profile .foto-profil {
 	width: 160px;
@@ -214,13 +213,21 @@ a:hover {
 	border-radius: 50%;
 }
 
-.container .profile .foto-profil p{
+.container .profile .foto-profil {
 	text-align: center;
-	line-height: 140px;
-	font-family: 'Oswald', sans-serif;
-	font-size: 22px;
-	letter-spacing: -1.3px;
-	color: #215277;
+	margin-bottom: 20px;
+}
+
+.container .profile .foto-profil img {
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.container .profile .foto-profil input[type="file"] {
+	display: block;
+	margin: 10px auto;
 }
 
 .container .profile .keterangan a{
@@ -229,8 +236,9 @@ a:hover {
 	letter-spacing: -1.3px;
 	color: white;
 	text-decoration: none;
-	margin-left: 130px;
-	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 span {

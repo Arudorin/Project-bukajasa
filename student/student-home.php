@@ -99,7 +99,7 @@ $selected_category = isset($_POST['category']) ? $_POST['category'] : '';
                 <img src="../uploads/<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Foto Profil">
             </div>
             <div class="keterangan">
-                <a href="profile-mahasiswa.php" style="margin-left: 128px;"><?php echo htmlspecialchars($user['name']); ?></a>
+                <a href="profile-mahasiswa.php"><?php echo htmlspecialchars($user['name']); ?></a>
             </div>
         </div>
 

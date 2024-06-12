@@ -48,9 +48,10 @@ $result_applications = $stmt_applications->get_result();
         <div class="header">
         </div>
 
-        <div class="foto">
+        <div class="profile-pic">
           <img src="../uploads/<?php echo $user['profile_picture']; ?>" alt="Profile Picture">
         </div>
+        
         <div class="teks">
             <p>Nama: <?php echo htmlspecialchars($user['name']); ?></p>
             <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>

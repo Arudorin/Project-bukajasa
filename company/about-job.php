@@ -51,7 +51,6 @@ $result_applicants = $stmt_applicants->get_result();
     <div class="container">
 
         <div class="header">
-            <img src="Images/title.png">
         </div>
 
         <div class="log-out"><a href="../logout.php">Log out</a></div>
@@ -93,16 +92,16 @@ $result_applicants = $stmt_applicants->get_result();
         </div>
         <div class="profile">
             <div class="foto-profil">
-                <p>Disini Foto profil</p>
+                <img src="../uploads/<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Foto Profil">
             </div>
             <div class="keterangan">
-                <a href="profile-comp.php">Nama Perusahaan</a>
-                <span><br>Email</span>
+                <a href="profile-comp.php"><?php echo htmlspecialchars($user['name']); ?></a>
             </div>
-            <div class="post-job">
-                <a href="post-job.html">Post a Job</a>
+        </div>            <div class="post-job">
+                <a href="post-job.php">Post a Job</a>
             </div>
         </div>
+
 
     </div>
 </body>

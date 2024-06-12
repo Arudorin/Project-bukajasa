@@ -152,38 +152,50 @@ hr {
     margin-top: 260px;
 }
 
-.container .profile {
-    width: 390px;
-    height: 1000px;
-    background-color: #121525;
-    margin: 10px 0 0 10px;
-    float: left;
+.container .profile{
+	width: 390px;
+	height: 700px;
+	background-color: #121525;
+	margin-top: 10px;
+	float: left;
+	margin-left: 10px;
 }
 
 .container .profile .foto-profil {
-    width: 160px;
-    height: 160px;
-    background-color: white;
-    margin: 20px auto 0;
-    border-radius: 50%;
+	width: 160px;
+	height: 160px;
+	background-color: white;
+	margin: auto;
+	margin-top: 20px;
+	border-radius: 50%;
 }
 
-.container .profile .foto-profil p {
-    text-align: center;
-    line-height: 140px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 22px;
-    letter-spacing: -1.3px;
-    color: #215277;
+.container .profile .foto-profil {
+	text-align: center;
+	margin-bottom: 20px;
 }
 
-.container .profile .keterangan a {
-    font-family: 'Oswald', sans-serif;
-    font-size: 22px;
-    letter-spacing: -1.3px;
-    color: white;
-    text-decoration: none;
-    margin: 10px 0 0 130px;
+.container .profile .foto-profil img {
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.container .profile .foto-profil input[type="file"] {
+	display: block;
+	margin: 10px auto;
+}
+
+.container .profile .keterangan a{
+	font-family: 'Oswald', sans-serif;
+	font-size: 22px;
+	letter-spacing: -1.3px;
+	color: white;
+	text-decoration: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 span {
@@ -192,6 +204,7 @@ span {
     font-size: 18px;
     letter-spacing: -1.3px;
     color: white;
+
 }
 
 .post-job a {
