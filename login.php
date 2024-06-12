@@ -59,3 +59,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log in</title>
+    <link rel="stylesheet" type="text/css" href="CSS/Stylelogin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header"></div>
+        <div class="konten">
+            <form action="login.php" method="post">
+                <input id="text-box" type="text" name="username" placeholder="username" required>
+                <input id="text-box" type="password" name="password" placeholder="password" required>
+                <input id="submit" type="submit" name="submit" value="Log In">
+            </form>
+        </div>
+        <div class="footer">
+            <p>BukaJasa</p>
+        </div>
+    </div>
+</body>
+</html>

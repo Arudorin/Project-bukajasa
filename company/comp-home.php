@@ -77,9 +77,11 @@ $result = $stmt->get_result();
             <div class="keterangan">
                 <a href="profile-comp.php"><?php echo htmlspecialchars($company['name']); ?></a>
             </div>
-        </div>            <div class="post-job">
+            <div class="post-job">
                 <a href="post-job.php">Post a Job</a>
             </div>
+        </div>            
+
         </div>
 
     </div>

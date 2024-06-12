@@ -7,12 +7,28 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Perusahaan') {
     exit();
 }
 
+$company_id = $_SESSION['user_id'];
 $job_id = isset($_GET['id']) ? $_GET['id'] : '';
 if (empty($job_id)) {
     echo "Invalid job ID.";
     exit();
 }
 
+// Fetch company details
+$sql_company = "SELECT name, email, profile_picture FROM users WHERE id = ?";
+$stmt_company = $conn->prepare($sql_company);
+$stmt_company->bind_param("i", $company_id);
+$stmt_company->execute();
+$result_company = $stmt_company->get_result();
+
+if ($result_company->num_rows == 0) {
+    echo "Company not found.";
+    exit();
+}
+
+$user = $result_company->fetch_assoc();
+
+// Fetch job details
 $sql = "SELECT j.id, j.title, j.description, j.requirements, j.salary, j.deadline, j.category, u.name AS company_name, u.email 
         FROM jobs j 
         JOIN users u ON j.company_id = u.id 
@@ -29,6 +45,7 @@ if ($result->num_rows == 0) {
 
 $job = $result->fetch_assoc();
 
+// Fetch applicants
 $sql_applicants = "SELECT a.id AS application_id, u.id AS user_id, u.name 
                    FROM applications a 
                    JOIN users u ON a.user_id = u.id 
@@ -63,9 +80,9 @@ $result_applicants = $stmt_applicants->get_result();
                     <p>Disini Foto</p>
                 </div>
                 <div class="teks">
-                    <span>Nama pekerjaan: <?php echo $job['title']; ?></span><br>
+                    <span>Nama pekerjaan: <?php echo htmlspecialchars($job['title']); ?></span><br>
                     <span>Gaji: Rp. <?php echo number_format($job['salary'], 2); ?> / Jam</span><br>
-                    <span>Deadline: <?php echo $job['deadline']; ?></span><br>
+                    <span>Deadline: <?php echo htmlspecialchars($job['deadline']); ?></span><br>
                 </div>
                 <hr>
                 <div class="delete"><a href="delete-job.php?id=<?php echo $job['id']; ?>">Hapus pekerjaan</a></div>
@@ -74,7 +91,7 @@ $result_applicants = $stmt_applicants->get_result();
                     if ($result_applicants->num_rows > 0) {
                         while ($applicant = $result_applicants->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<td><font>" . $applicant['name'] . "</font><hr></td>";
+                            echo "<td><font>" . htmlspecialchars($applicant['name']) . "</font><hr></td>";
                             echo "<td width='200px' valign='top'>";
                             echo "<div class='decline'><a href='decline_application.php?id=" . $applicant['application_id'] . "'>Decline</a></div>";
                             echo "<div class='accept'><a href='accept_application.php?id=" . $applicant['application_id'] . "'>Accept</a></div>";
@@ -97,11 +114,10 @@ $result_applicants = $stmt_applicants->get_result();
             <div class="keterangan">
                 <a href="profile-comp.php"><?php echo htmlspecialchars($user['name']); ?></a>
             </div>
-        </div>            <div class="post-job">
-                <a href="post-job.php">Post a Job</a>
-            </div>
+            <div class="post-job">
+            <a href="post-job.php">Post a Job</a>
         </div>
-
+        </div>
 
     </div>
 </body>

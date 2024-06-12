@@ -46,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <div class="header">
-            <img src="Images/title.png" alt="Title">
         </div>
         <div class="isi">
             <div class="judul"><h1>Sign Up</h1></div>

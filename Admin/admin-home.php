@@ -18,7 +18,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Admin') {
     <div class="container">
 
         <div class="header">
-            <img src="../Images/title.png">
         </div>
 
         <div class="log-out"><a href="../logout.php">Log out</a></div>
@@ -28,19 +27,19 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Admin') {
                 <tr>
                     <td width="400"><font>Perusahaan</font><hr></td>
                     <td>
-                        <a href="admin-perusahaan.html">Edit</a><hr class="hr">
+                        <a href="admin-perusahaan.php">Edit</a><hr class="hr">
                     </td>
                 </tr>
                 <tr>
                     <td><font>Mahasiswa</font><hr></td>
                     <td>
-                        <a href="admin-mahasiswa.html">Edit</a><hr class="hr">
+                        <a href="admin-mahasiswa.php">Edit</a><hr class="hr">
                     </td>
                 </tr>
                 <tr>
                     <td><font>Pekerjaan</font><hr></td>
                     <td>
-                        <a href="admin-pekerjaan.html">Edit</a><hr class="hr">
+                        <a href="admin-pekerjaan.php">Edit</a><hr class="hr">
                     </td>
                 </tr>
             </table>
