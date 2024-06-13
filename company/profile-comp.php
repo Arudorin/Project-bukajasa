@@ -68,7 +68,7 @@ $result_jobs = $stmt_jobs->get_result();
                         echo "<tr>";
                         echo "<td><a href='about-job.php?id={$row['id']}'><font>{$row['title']}</font></a><hr></td>";
                         echo "<td width='150px'><font>{$row['applicant_count']} Applicant(s)</font><hr></td>";
-                        echo "<td width='150px'><a href='delete-job.php?id={$row['id']}'><button>Delete</button></a></td>";
+                        echo "<td width='150px'><a href='delete-pekerjaan.php?id={$row['id']}'><button>Delete</button></a></td>";
                         echo "</tr>";
                     }
                 } else {
@@ -79,6 +79,9 @@ $result_jobs = $stmt_jobs->get_result();
                 $conn->close();
                 ?>
             </table>
+            <div class="back-link" style="text-align: center; margin-top: 20px;">
+            <a href="comp-home.php" style="color:white; text-decoration: none; font-size: 16px;">Back to Home</a>
+            </div>
         </div>
     </div>
 

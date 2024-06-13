@@ -46,7 +46,7 @@ if ($result->num_rows == 0) {
 $job = $result->fetch_assoc();
 
 // Fetch applicants
-$sql_applicants = "SELECT a.id AS application_id, u.id AS user_id, u.name 
+$sql_applicants = "SELECT a.id AS application_id, u.id AS user_id, u.name, a.status 
                    FROM applications a 
                    JOIN users u ON a.user_id = u.id 
                    WHERE a.job_id = ?";
@@ -64,16 +64,10 @@ $result_applicants = $stmt_applicants->get_result();
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 </head>
 <body>
-
     <div class="container">
-
-        <div class="header">
-        </div>
-
+        <div class="header"></div>
         <div class="log-out"><a href="../logout.php">Log out</a></div>
-
         <h1>Applicants</h1>
-
         <div class="posting">
             <div class="post-1">
                 <div class="foto">
@@ -90,12 +84,18 @@ $result_applicants = $stmt_applicants->get_result();
                     <?php
                     if ($result_applicants->num_rows > 0) {
                         while ($applicant = $result_applicants->fetch_assoc()) {
-                            echo "<tr>";
+                            echo "<tr id='applicant-{$applicant['application_id']}'>";
                             echo "<td><font>" . htmlspecialchars($applicant['name']) . "</font><hr></td>";
                             echo "<td width='200px' valign='top'>";
-                            echo "<div class='decline'><a href='decline_application.php?id=" . $applicant['application_id'] . "'>Decline</a></div>";
-                            echo "<div class='accept'><a href='accept_application.php?id=" . $applicant['application_id'] . "'>Accept</a></div>";
-                            echo "<hr id='hr'>";
+
+                            if ($applicant['status'] == 'Pending') {
+                                echo "<div class='decline'><a href='decline_application.php?id=" . $applicant['application_id'] . "'>Decline</a></div>";
+                                echo "<div class='accept'><a href='accept_application.php?id=" . $applicant['application_id'] . "'>Accept</a></div>";
+                            } elseif ($applicant['status'] == 'Accepted') {
+                                echo "<div class='accepted'><button disabled>Accepted</button></div>";
+                            } elseif ($applicant['status'] == 'Declined') {
+                                echo "<div class='declined'><button disabled>Declined</button></div>";
+                            }
                             echo "</td>";
                             echo "</tr>";
                         }
@@ -105,6 +105,9 @@ $result_applicants = $stmt_applicants->get_result();
                     $stmt_applicants->close();
                     ?>
                 </table>
+                <div class="back-link" style="text-align: center; margin-top: 20px;">
+                  <a href="comp-home.php" style="color:white; text-decoration: none; font-size: 16px;">Back to Home</a>
+                </div>
             </div>
         </div>
         <div class="profile">
@@ -115,10 +118,11 @@ $result_applicants = $stmt_applicants->get_result();
                 <a href="profile-comp.php"><?php echo htmlspecialchars($user['name']); ?></a>
             </div>
             <div class="post-job">
-            <a href="post-job.php">Post a Job</a>
-        </div>
-        </div>
+                <a href="post-job.php">Post a Job</a>
+            </div>
 
+        </div>
+        
     </div>
 </body>
 </html>

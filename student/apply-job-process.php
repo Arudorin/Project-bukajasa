@@ -23,20 +23,22 @@ $user_id = $_SESSION['user_id'];
 include '../db_connection.php';
 
 // Menyiapkan query untuk memeriksa apakah pengguna sudah mengirimkan aplikasi untuk pekerjaan ini sebelumnya
-$sql = "SELECT id FROM applications WHERE job_id = ? AND user_id = ?";
+$sql = "SELECT status FROM applications WHERE job_id = ? AND user_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ii", $job_id, $user_id);
 $stmt->execute();
 $stmt->store_result();
 
-// Jika pengguna sudah mengirimkan aplikasi sebelumnya, maka tidak perlu mengirimkan lagi
+// Jika pengguna sudah mengirimkan aplikasi sebelumnya, tampilkan pesan pop-up
 if ($stmt->num_rows > 0) {
-    header("Location: student-home.php");
+    $stmt->bind_result($status);
+    $stmt->fetch();
+    header("Location: apply-job.php?id=$job_id&status=$status");
     exit();
 }
 
 // Menyiapkan query untuk menyimpan aplikasi pekerjaan baru
-$sql = "INSERT INTO applications (job_id, user_id) VALUES (?, ?)";
+$sql = "INSERT INTO applications (job_id, user_id, status) VALUES (?, ?, 'Pending')";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ii", $job_id, $user_id);
 

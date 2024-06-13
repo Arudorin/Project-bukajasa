@@ -4,6 +4,18 @@
     <title>Apply Job</title>
     <link rel="stylesheet" type="text/css" href="../CSS/apply-jobstyle.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const status = "<?php echo isset($_GET['status']) ? $_GET['status'] : ''; ?>";
+            if (status === 'Accepted') {
+                alert('Anda sudah diterima untuk pekerjaan ini.');
+            } else if (status === 'Declined') {
+                alert('Anda sudah ditolak untuk pekerjaan ini.');
+            } else if (status === 'Pending') {
+                alert('Aplikasi Anda sedang dalam proses peninjauan.');
+            }
+        });
+    </script>
 </head>
 <body>
 
@@ -14,6 +26,7 @@
 
         <div class="kiri">
             <?php
+            session_start();
             include '../db_connection.php';
 
             if (isset($_GET['id'])) {
@@ -37,6 +50,21 @@
                     echo "<span id='sub'>Gaji: Rp." . $row['salary'] . " / Jam</span><br>";
                     echo "<span id='sub'>Deadline: " . $row['deadline'] . "</span><br>";
                     echo "<span id='sub'>Kategori: " . $row['category'] . "</span><br><br>";
+
+                    // Memeriksa status aplikasi pengguna
+                    $sql_status = "SELECT status FROM applications WHERE job_id = ? AND user_id = ?";
+                    $stmt_status = $conn->prepare($sql_status);
+                    $stmt_status->bind_param("ii", $job_id, $_SESSION['user_id']);
+                    $stmt_status->execute();
+                    $result_status = $stmt_status->get_result();
+
+                    if ($result_status->num_rows > 0) {
+                        $application = $result_status->fetch_assoc();
+                        $status = $application['status'];
+                        echo "<script>window.location.href = 'apply-job.php?id=$job_id&status=$status';</script>";
+                    }
+
+                    $stmt_status->close();
                 } else {
                     echo "Job not found.";
                 }
@@ -48,7 +76,8 @@
             }
             ?>
             <a href="apply-job-process.php?job_id=<?php echo $job_id; ?>">Apply</a>
-
+        </div>
+    </div>
 
 </body>
 </html>
